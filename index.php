@@ -2,7 +2,7 @@
 <html>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <head>
-
+<title>南通滨海园区科教城官方网站</title>
 <?php include('./css_import.php'); ?>
 <?php include('./js_import.php'); ?>
 

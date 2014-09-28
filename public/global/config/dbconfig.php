@@ -1,10 +1,16 @@
 <?php
 	class DBConfig{
-		private $host = 'localhost';
-		private $user = 'a0921213351';
-		private $password = 'qwe1234';
-		private $dbname = 'a0921213351';
+		// LOCAL
+		// private $host = 'localhost';
+		// private $user = 'a0921213351';
+		// private $password = 'qwe1234';
+		// private $dbname = 'a0921213351';
 
+		// DEV
+		private $host = 'localhost';
+		private $user = 'root';
+		private $password = '';
+		private $dbname = 'test';
 		function __construct(){
 			//echo 'Using default construtor<br>';
 		}

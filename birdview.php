@@ -10,7 +10,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Testing</title>
+	<title>南通滨海园区科教城官方网站</title>
 	<?php include('./css_import.php');?>
 	<style type="text/css">
     /* Custom Styles */
@@ -52,6 +52,9 @@
     	position: absolute;
     	right:10px;
     }
+    .headimg img{
+    	width:90%;
+    }
 </style>
 	<?php include('./js_import.php');?>
 	<script type="text/javascript">
@@ -68,10 +71,10 @@
 				'post',
 				params,
 				function(e,status){
-					$("#ajaxContainer").html(e.responseText);
+					$("#ajaxContainer").empty().html(e.responseText);
 				},
 				function(e,status){
-					$("#myScrollspy").html("").html(e.responseText);
+					$("#myScrollspy").empty().html(e.responseText);
 					
 				}
 			);
@@ -98,9 +101,8 @@
 	<?php include("./header.php");?>
 	<div class="jumbotron text-center">
 		<div class="row">
-			<div class="col-xs-2"></div>
-			<div class="col-xs-10">
-				<img src="img/samples/intro/head.png" class="img-thumbnail" />
+			<div class="headimg col-xs-12">
+				<img src="images/samples/intro/head.png" />
 			</div>
 		</div>
 	</div>

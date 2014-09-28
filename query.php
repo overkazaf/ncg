@@ -1,9 +1,46 @@
+<?
+	header("content-type:text/html;charset=utf-8");
+?>
 <!doctype html>
 <html>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+
 <head>
+<title>南通滨海园区科教城官方网站</title>
 	<?php include('./css_import.php'); ?>
-	<?php include('./js_import.php'); ?></head>
+	<?php include('./js_import.php'); ?>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var url = "public/global/queryArticles.php";
+		var params = {};
+			ajaxJSON(
+			url,
+			"get",
+			params,
+			function(res){
+				if(res.isSuccess){
+					console.log(res.responseText);
+					$('#tbodyContainer').empty();
+					$(".cnt").text(res.responseText.length);
+					for(var i=0,len=res.responseText.length;i<len;i++){
+						var line = res.responseText[i];
+						$("<tr></tr>")
+						.append($("<td></td>").text(line['title']))
+							.append($("<td></td>").text(line['author']))
+							.append($("<td></td>").text(line['date']))
+							.append($("<td></td>").append($('<a href="'+line["url"]+'">查看</a>')))
+							.appendTo($("#tbodyContainer"));
+					}
+					$("#resultTable").DataTable();
+				}
+			},
+			function(res){
+				console.log(res);
+			}
+		);
+	});
+	</script>
+</head>
 <body>
 	<?php
 	include('./header.php');
@@ -18,59 +55,32 @@
 			<button class="btn btn-lg btn-info">继续</button>
 		</div>
 		<div class="col-xs-9">
-			<img src="img/samples/intro/head.png">
+			<img src="images/samples/intro/head.png">
 		</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="col-xs-12">
 		<div class="row">
-			<div class="col-xs-3">
-				<ul class="list-group">
-					<li class="list-group-item">Item1</li>
-					<li class="list-group-item">Item2</li>
-					<li class="list-group-item">Item3</li>
-					<li class="list-group-item">Item4</li>
-				</ul>
-			</div>
-			<div class="col-xs-9">
-				<div class="alert alert-success"><i><?php echo $_GET['kw'];?></i>查询结果:  一共找到<?php echo '7';?>条匹配记录</div>
+			<div class="col-xs-12">
+				<div class="alert alert-info"><i><?php echo $_GET['kw'];?></i>查询结果:  一共找到<span class="label label-primary cnt"></span>条匹配记录</div>
 				<div class="container">
-					<div class="col-xs-8">
-						<div class="panel panel-default">
-							<div class="panel-heading">测试检索结果
-							</div>
-							<div class="panel-body">
-								<ul class="list-group">
-									<li class="list-group-item">
-										<a href="#">集团开展ERP系统人力资源专项培训</a><i class="pull-right">2014-09-19</i>
-									</li>
-									<li class="list-group-item">
-										<a href="#">集团开展税收法规及筹划技巧培训</a><i class="pull-right">2014-09-19</i>
-									</li>
-									<li class="list-group-item">
-										<a href="#">通州湾科教产业公司召开一届一次董事会</a><i class="pull-right">2014-09-19</i>
-									</li>
-									<li class="list-group-item">
-										<a href="#">市国资委调研园区空港产业</a><i class="pull-right">2014-09-19</i>
-									</li>
-									<li class="list-group-item">
-										<a href="#">兰州大学艺术院校老师来通调研</a><i class="pull-right">2014-09-19</i>
-									</li>
-									<li class="list-group-item">
-										<a href="#">商贸公司入驻创业社区</a><i class="pull-right">2014-09-19</i>
-									</li>
-									<li class="list-group-item">
-										<a href="#">西安交大苏州研究院吴院长一行参观科教城</a><i class="pull-right">2014-09-19</i>
-									</li>
-								</ul>
-								<ul class="pager pull-right">
-								  <li><a href="#">上一页</a></li>
-								  <li><a href="#">下一页</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+					<table id="resultTable" class="table table-striped">
+						<thead>
+							<th>标题</th>
+							<th>作者</th>
+							<th>发布时间</th>
+							<th>文章链接</th>
+						</thead>
+						<tbody id="tbodyContainer">
+							<tr>
+								<td>标题1</td>
+								<td>作者1</td>
+								<td>2014-09-20</td>
+								<td>305</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

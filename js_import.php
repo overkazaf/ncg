@@ -1,6 +1,8 @@
 <script src="js/vendor/jquery.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="js/flat-ui.js"></script>
 <script src="js/unslider.min.js"></script>
 <script src="js/affix.js"></script>

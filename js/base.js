@@ -1,25 +1,61 @@
 $(document).ready(function(){
 	$(".carousel").carousel('cycle');
 	initTabs();
-	initPaginations();
-
-	/*
-	var url = "./public/global/dispatcher.php",
-		params = {};
-		params.id = 12;
-	ajaxJSON(
-			url,
-			'post',
-			params,
-			function(e){
-				printJSONArray(e);
-			},
-			function(e){
-				console.log(e);
-			}
-		);
-	*/
+	initEmblem();
+	initImpnav();
 });
+function initEmblem(){
+	/*
+		<div class="col-xs-4">
+          <div class="tile">
+            <img class="tile-image big-illustration img-thumbnail" alt="" src="images/samples/emblem/2.gif">
+            <h3 class="tile-title">Web Oriented</h3>
+            <a class="btn btn-primary btn-large btn-block" href="#">Get Pro</a>
+          </div>
+        </div>
+	*/
+	var names = [
+		'北京航空航天大学',
+		'上海海事大学',
+		'西安交通大学',
+		'南京大学',
+		'河海大学',
+		'天津大学',
+		'上海交通大学',
+		'浙江大学',
+		'中国科学院',
+		'北京物资学院',
+		'哈尔滨工程大学',
+		'兰州大学',
+		'南京航空航天大学',
+		'山东大学',
+		'上海电力学院',
+		'武汉大学',
+		'西北工业大学'
+	];
+	for(var i=1;i<18;i++){
+		$(".img-container").append(
+			$("<div class='col-xs-2'></div>").append(
+				//img
+				$('<img class="small-icon img-rounded" />').attr({
+					src:"images/samples/emblem/"+i+".gif",
+					alt:names[i-1],
+					title:names[i-1]
+				})
+			)
+		);
+	}
+}
+function initImpnav(){
+	$('#impContainer p').hide();
+	$('#impContainer p').first().show();
+	$("#impNav li").on('click',function(index){
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
+		$("#impContainer p").hide();
+		$('#impContainer p:eq('+$(this).attr("index")+')').show('slow');
+	});
+}
 function initTabs(){
 	$(".nav li").on('click', function(){
 		$(this).siblings().removeClass("active");
@@ -114,4 +150,26 @@ function showConfirm(json){
 	});
 	$('#confirmModal').modal('show');
 	
+}
+
+function showStatus(json){
+	$("#statusModal").modal("show");
+	console.log(json);
+	if(json.title){
+		$("#statusTitle").text(json.title);
+	}
+
+	if(!json.flag){
+		$("#statusBody").removeClass("alert-danger").addClass("alert-success");
+	}else{
+		$("#statusBody").removeClass("alert-success").addClass("alert-danger");
+	}
+
+	if(json.body){
+		$("#statusBody").text(json.body);
+	}
+
+	if(!json.hasCancelBtn){
+		$("#statusCancel").hide();
+	}
 }

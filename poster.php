@@ -9,15 +9,15 @@
 		<!-- 轮播（Carousel）项目 -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="./img/samples/intro/head.png" alt="First slide">
+				<img src="images/samples/intro/head.png" alt="First slide">
 				<div class="carousel-caption">标题 1</div>
 			</div>
 			<div class="item">
-				<img src="./img/samples/intro/head.png" alt="Second slide">
+				<img src="./images/samples/intro/head.png" alt="Second slide">
 				<div class="carousel-caption">标题 2</div>
 			</div>
 			<div class="item">
-				<img src="./img/samples/intro/head.png" alt="Third slide">
+				<img src="images/samples/intro/head.png" alt="Third slide">
 				<div class="carousel-caption">标题 3</div>
 			</div>
 

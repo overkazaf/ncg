@@ -8,7 +8,7 @@
 		function getRootList($pid = 0,& $result = array()){
 			$sql = "SELECT * FROM menu WHERE parent_id=".$pid;
 			$res = mysql_query($sql,$this->dbutils->getConn());
-			while($row = mysql_fetch_assoc($res, MYSQL_ASSOC)){
+			while($row = mysql_fetch_array($res, MYSQL_ASSOC)){
 				$result[] = $row;
 			}
 			return $result;

@@ -32,15 +32,22 @@ a.right.carousel-control{
 	left: auto;
 	right:10px;
 }
+.leftLayout{
+	min-width: 760px;
+}
+.rightLayout{
+	min-width: 200px;
+}
 .img-container img{
-	margin-left: 40px;
-	margin-top: 20px;
+	margin-left: 4px;
+	margin-top: 10px;
 }
 .navbar-brand{
 	margin-left: 50px;
 	margin-right:50px;
 }
 .small-icon{
-	width:160px;
-	height: 120px;
+	margin-right: 10px;
+	width:100px;
+	height: 100px;
 }
